@@ -1,10 +1,6 @@
 <?php 
 
-$email = (ISSET($_POST["inputEmail"]))?$_POST["inputEmail"]:"seu@email.com.br";
-var_dump($email);
-//$email = $_POST["inputEmail"];
-
-
+$email = $_POST["inputEmail"];
 
 $ch = curl_init();
 
@@ -20,14 +16,9 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array(
 )));
 
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
 $recaptcha = json_decode(curl_exec($ch), true);
-
 curl_close($ch);
 
-var_dump($recaptcha);
-
-/*
 if ($recaptcha["sucess"] === true) {
 
 	echo "OK: ".$_POST["inputEmail"];
@@ -37,5 +28,4 @@ if ($recaptcha["sucess"] === true) {
 
 	header("Location: exemplo-04.php");
 }
-*/
 ?>
